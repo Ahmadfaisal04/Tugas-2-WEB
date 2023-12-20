@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 Web Lanjut</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #root {
+            text-align: center;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        h2, p {
+            margin: 10px 0;
+        }
+    </style>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+    // Komponen utama
+    const App = () => {
+        // State untuk menyimpan detail orang
+        const [details, setDetails] = React.useState({
+            nama: '',
+            jurusan: '',
+            foto: '',
+        });
+
+        // Fungsi untuk menampilkan detail berdasarkan nama
+        const showDetails = (name) => {
+            // Mengupdate state berdasarkan nama yang diklik
+            switch (name) {
+                case 'faisal':
+                    setDetails({
+                        nama: 'Ahmad Faisal',
+                        jurusan: 'Teknik Informatika',
+                        foto: 'https://ahmadfaisal04.github.io/LinkTree/img/profil.png', 
+                    });
+                    break;
+                case 'sandhika':
+                    setDetails({
+                        nama: 'Sandhika Galih',
+                        jurusan: 'Teknik Informatika',
+                        foto: 'https://media.licdn.com/dms/image/C5603AQGJwJCALRrYBw/profile-displayphoto-shrink_800_800/0/1592884592956?e=2147483647&v=beta&t=7TbKylvlfCCEqZ25QuAnyOH9IBJxuwv5tNsXxAgPijs',
+                    });
+                    break;
+                case 'dea':
+                    setDetails({
+                        nama: 'Dea Afriza',
+                        jurusan: 'Sistem Informasi',
+                        foto: 'https://yt3.googleusercontent.com/Jg2d9WQ9Edhmnp7gk5BgMDRzos1YYE9JWlkbjnAqHWD4KooDY_KTkf7Vl23l7n1cFD-o3N9rIRU=s900-c-k-c0x00ffffff-no-rj',
+                    });
+                    break;
+                case 'hilman':
+                    setDetails({
+                        nama: 'Hilman Ramadhan',
+                        jurusan: 'Teknik Informatika',
+                        foto: 'https://pbs.twimg.com/profile_images/1716573829357817856/bf7ZtY-b_400x400.jpg',
+                    });
+                    break;
+                case 'faqihza':
+                    setDetails({
+                        nama: 'Faqihza Mukhlis',
+                        jurusan: 'Teknologi Industri',
+                        foto: 'https://yt3.googleusercontent.com/ytc/APkrFKaATj-y1veZYLAVyb17eQlBoWV3iiK_41lHfC1yfw=s900-c-k-c0x00ffffff-no-rj',
+                    });
+                    break;
+                default:
+                    break;
+            }
+        };
+
+        return (
+            <div>
+                {/* Tombol-tombol */}
+                <button onClick={() => showDetails('faisal')}>Faisal</button>
+                <button onClick={() => showDetails('sandhika')}>Sandhika</button>
+                <button onClick={() => showDetails('dea')}>Dea</button>
+                <button onClick={() => showDetails('hilman')}>Hilman</button>
+                <button onClick={() => showDetails('faqihza')}>Faqihza</button>
+
+                {/* Detail yang ditampilkan */}
+                {details.nama && (
+                    <div>
+                        <img
+                            src={details.foto}
+                            alt="Foto Orang"
+                        />
+                        <h2>{details.nama}</h2>
+                        <p>{details.jurusan}</p>
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    // Render komponen React ke dalam elemen dengan ID "root"
+    ReactDOM.render(<App />, document.getElementById('root'));
+</script>
+
+</body>
+</html>
